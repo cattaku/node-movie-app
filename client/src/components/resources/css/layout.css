@@ -1,0 +1,9 @@
+.basic-layout { display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;
+    
+}
+.login-form {
+    display: flex; flex-direction: column;
+}
+#login-btn {
+
+}
