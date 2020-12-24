@@ -1,12 +1,7 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch,Route } from "react-router-dom";
 
-import LandingPage from './components/views/LandingPage';
+import LandingPage from './components/views/LandingPage/LandingPage';
 import Login from './components/views/user/Login';
 import Register from './components/views/user/Register';
 import Auth from './hoc/auth';
@@ -18,7 +13,7 @@ function App() {
   return (
     <Router>
       <div>
-        <nav>
+        {/* <nav>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -30,7 +25,7 @@ function App() {
               <Link to="/register">Register</Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
