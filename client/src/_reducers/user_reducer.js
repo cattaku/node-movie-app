@@ -1,4 +1,4 @@
-import { AUTH_USER, LOGIN_USER, REGISTER_USER } from '../_actions/types'
+import { AUTH_USER, LOGIN_USER, LOGOUT_USER, REGISTER_USER } from '../_actions/types'
 
 export default function (state = {}, action) {
     switch (action.type) {
@@ -14,6 +14,9 @@ export default function (state = {}, action) {
         case AUTH_USER :
             return {...state, userData:action.payload}
             break;
+        
+        case LOGOUT_USER :
+            return { ...state}
 
         default:
             return state;

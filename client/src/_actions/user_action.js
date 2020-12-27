@@ -1,5 +1,6 @@
 import Axios from 'axios'
-import { AUTH_USER, LOGIN_USER, REGISTER_USER } from './types'
+import { AUTH_USER, LOGIN_USER, REGISTER_USER, LOGOUT_USER } from './types'
+import { USER_SERVER } from '../components/Config'
 
 
 // 로그인
@@ -29,6 +30,16 @@ export function auth(dataToSubmit) {
   .then(response => response.data)
   return {
     type: AUTH_USER,
+    payload: request
+  }
+}
+
+export function logoutUser() {
+  const request = Axios.get('api/users/logout')
+  .then(response => response.data)
+
+  return {
+    type: LOGOUT_USER,
     payload: request
   }
 }
