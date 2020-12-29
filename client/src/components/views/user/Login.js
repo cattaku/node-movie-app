@@ -41,9 +41,7 @@ function Login(props) {
   return (
     <div class="basic-layout">
       <form class="login-form" onSubmit={onSubmitHandler}>
-        {/* <label>e-mail</label> */}
         <input type="email" value={email} placeholder="example@example.com" onChange={emailHandler} />
-        {/* <label>password</label> */}
         <input type="password" value={password} placeholder="password" onChange={passwordHandler}/><br/>
         <button id="login-btn" type="submit">Login</button>
         
@@ -51,7 +49,5 @@ function Login(props) {
     </div>
   )
   }
-  //git test
-
 
 export default withRouter(Login)

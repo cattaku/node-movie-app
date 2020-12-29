@@ -4,6 +4,7 @@ import MainImage from '../LandingPage/section/MainImage'
 import MovieInfo from './MovieSections/MovieInfo'
 import GridCards from '../commons/GridCards'
 import { Row } from 'antd'
+import { Favorite } from './MovieSections/Favorite'
 
 
 function MovieDetail(props) {
@@ -16,9 +17,9 @@ function MovieDetail(props) {
     //로딩시 영화 API 불러오기
     useEffect(() => {
 
-        //배우정보
+        //배우정보 API
         let endpointCrew = `${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`
-        //영화정보
+        //영화정보 API
         let endpointInfo = `${API_URL}movie/${movieId}?api_key=${API_KEY}`
 
         fetch(endpointInfo)
@@ -49,10 +50,15 @@ function MovieDetail(props) {
                     image = {`${MOVIE_IMAGE_URL}w1280${Movie.backdrop_path}`} 
                     title = {Movie.original_title}
                     discription = {Movie.overview}
-                />
+            />
 
             {/* Body */}
             <div style={{ width:'85%', margin:'1rem auto'}}>
+                {/* Favorite Button */}
+                <div style={{ display:'flex', justifyContent:'flex-end'}}>
+                <button> Favorite </button>
+                    {/* <Favorite movieInfo={Movie} movieId={movieId} movieFrom={} /> */}
+                </div>
 
                 {/* MovieInfo */}
                 <MovieInfo 
