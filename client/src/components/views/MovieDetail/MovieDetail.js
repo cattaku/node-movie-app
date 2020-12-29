@@ -4,7 +4,7 @@ import MainImage from '../LandingPage/section/MainImage'
 import MovieInfo from './MovieSections/MovieInfo'
 import GridCards from '../commons/GridCards'
 import { Row } from 'antd'
-import { Favorite } from './MovieSections/Favorite'
+import Favorite from './MovieSections/Favorite'
 
 
 function MovieDetail(props) {
@@ -25,14 +25,14 @@ function MovieDetail(props) {
         fetch(endpointInfo)
             .then(result => result.json())
             .then(result => {
-                console.log(result, "result")
+              
                 setMovie(result)
             })
 
         fetch(endpointCrew)
             .then(result => result.json())
             .then(result => {
-                console.log(result, "cast")
+               
                 setActor(result.cast)
             })    
     }, [])
@@ -56,8 +56,8 @@ function MovieDetail(props) {
             <div style={{ width:'85%', margin:'1rem auto'}}>
                 {/* Favorite Button */}
                 <div style={{ display:'flex', justifyContent:'flex-end'}}>
-                <button> Favorite </button>
-                    {/* <Favorite movieInfo={Movie} movieId={movieId} movieFrom={} /> */}
+               
+                    <Favorite movieInfo={Movie} movieId={movieId} userFrom={localStorage.getItem('userId')} />
                 </div>
 
                 {/* MovieInfo */}

@@ -1,33 +1,21 @@
-import React from "react";
-import { BrowserRouter as Router, Switch,Route } from "react-router-dom";
+import React, { Suspense }from "react";
+import { Switch,Route } from "react-router-dom";
 
+import Auth from './hoc/auth';
+
+import MainNav from './components/views/nav/MainNav'
 import LandingPage from './components/views/LandingPage/LandingPage';
 import Login from './components/views/user/Login';
 import Register from './components/views/user/Register';
 import MovieDetail from './components/views/MovieDetail/MovieDetail';
-import Auth from './hoc/auth';
-
-
 
 function App() {
 
   return (
-    <Router>
-      <div>
-        {/* <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/register">Register</Link>
-            </li>
-          </ul>
-        </nav> */}
-
+    <Suspense fallback={(<div>Loding...</div>)}>
+      <MainNav />
+      <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)' }}>
+        
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
@@ -37,7 +25,9 @@ function App() {
           <Route exact path="/movie/:movieId" component = {Auth(MovieDetail, null)} />
         </Switch>
       </div>
-    </Router>
+
+    </Suspense>
+  
   );
 }
 

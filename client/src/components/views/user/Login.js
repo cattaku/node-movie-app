@@ -10,6 +10,7 @@ import '../../resources/css/layout.css';
 function Login(props) {
 
   const dispatch = useDispatch();
+  const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -31,7 +32,8 @@ function Login(props) {
     dispatch(loginUser(body))  
       .then(response => {
         if (response.payload.loginSuccess) {
-          props.history.push('/')
+          window.localStorage.setItem('userId', response.payload.userId);
+          props.history.push('/');
         } else {
           alert("Error")
         }

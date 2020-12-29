@@ -25,7 +25,7 @@ function LandingPage() {
         fetch(endpoint)
             .then(response => response.json())
             .then(response => {
-            console.log(response, "response")
+            
             
             //setMovies([response.results]) 그리드 이미지를 가져오지 못하는 이슈발생 
             setMovies([...Movies, ...response.results])  

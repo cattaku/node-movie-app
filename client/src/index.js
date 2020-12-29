@@ -2,23 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import reduxThunk from 'redux-thunk';
-import reducer from './_reducers';
+import Reducer from './_reducers';
 import reportWebVitals from './reportWebVitals';
 
 const storeWithMiddleware = applyMiddleware(promiseMiddleware, reduxThunk)(createStore)
 
 ReactDOM.render(
     <Provider
-        store={storeWithMiddleware(reducer,
+        store={storeWithMiddleware(
+            Reducer,
             window.__REDUX_DEVTOOLS_EXTENSION__ &&
             window.__REDUX_DEVTOOLS_EXTENSION__()
         )}
     >
-        <App />
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+        
     </Provider>
     , document.getElementById('root'));
 
