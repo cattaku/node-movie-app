@@ -61,7 +61,7 @@ function LandingPage() {
                         <React.Fragment key= {index}>
                             <GridCards
                                 landingPage
-                                image = { movie.poster_path?`${MOVIE_IMAGE_URL}w500${movie.poster_path}` : null }
+                                image = { movie.poster_path?`${MOVIE_IMAGE_URL}w400${movie.poster_path}` : null }
                                 movieId = { movie.id }
                                 movieTitle = { movie.original_title }
                             />
