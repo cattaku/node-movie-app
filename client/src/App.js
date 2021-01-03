@@ -8,6 +8,8 @@ import LandingPage from './components/views/LandingPage/LandingPage';
 import Login from './components/views/user/Login';
 import Register from './components/views/user/Register';
 import MovieDetail from './components/views/MovieDetail/MovieDetail';
+import FavoritePage from "./components/views/FavoritePage/FavoritePage";
+
 
 function App() {
 
@@ -23,6 +25,7 @@ function App() {
           <Route exact path="/login" component = {Auth(Login,false)} />
           <Route exact path="/register" component = {Auth(Register, false)} />
           <Route exact path="/movie/:movieId" component = {Auth(MovieDetail, null)} />
+          <Route exact path="/favorite" component = {Auth(FavoritePage, true)} />
         </Switch>
       </div>
 

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { withRouter } from 'react-router-dom'; 
 import { API_URL, API_KEY, MOVIE_IMAGE_URL } from '../../Config';
 import MainImage from './section/MainImage';
+import Xscroll from '../commons/Xscroll';
 import GridCards from '../commons/GridCards'
 import { Row } from 'antd';
 
@@ -11,34 +12,48 @@ function LandingPage() {
 
     const [Movies, setMovies] = useState([]);
     const [MainMovieImage, setMainMovieImage] = useState(null)
+    const [TvPopular, setTvPopular] = useState([]);
+    
     const [CurrentPage, setCurrentPage] = useState(0)
     
     useEffect(() => {
         
-        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
-        fetchMovies(endpoint);
+        const moviePopular = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+        const tvPopular = `${API_URL}tv/popular?api_key=${API_KEY}&language=en-US&page=1`;
+        fetchMovies(moviePopular);
+        fetchTV(tvPopular);
            
     }, [])
 
+    //TV리스트 
+    const fetchTV = (tvPopular) => {
+        fetch(tvPopular)
+            .then(res => res.json())
+            .then(res => {
+            console.log(res, "tvList")
+            setTvPopular([...TvPopular, ...res.results])  
+            // setTvPopular(res.results[0,1,2,3,4,5])     
+            })
+    }
+
     //영화리스트 가져오기
-    const fetchMovies = (endpoint) => {
-        fetch(endpoint)
-            .then(response => response.json())
-            .then(response => {
+    const fetchMovies = (moviePopular) => {
+        fetch(moviePopular)
+            .then(res => res.json())
+            .then(res => {
             
-            
+            console.log(res, "movieList")
             //setMovies([response.results]) 그리드 이미지를 가져오지 못하는 이슈발생 
-            setMovies([...Movies, ...response.results])  
-            setMainMovieImage(MainMovieImage || response.results[0])
-            setCurrentPage(response.page)
+            setMovies([...Movies, ...res.results])  
+            setMainMovieImage(MainMovieImage || res.results[0])
+            setCurrentPage(res.page)
         })
     }
 
     //더보기 버튼
     const loadMore = () => {
-        // let endpoint = '';
-        const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${CurrentPage + 1}`;
-        fetchMovies(endpoint);
+        const moviePopular = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${CurrentPage + 1}`;
+        fetchMovies(moviePopular);
     }
 
     return (
@@ -51,7 +66,27 @@ function LandingPage() {
                     discription = {MainMovieImage.overview}
                 />
             }
-      
+           
+            <div style = {{ width:'85%', height:'100%',margin:'5rem auto', 
+            border:'1rem', overflow:'auto', whiteSpace:'nowrap'}}>
+
+                <h2>Tv</h2>
+                <hr/>
+                
+                {TvPopular && TvPopular.map((tv, index) => (
+                    <React.Fragment key = {index} >
+                        <Xscroll
+                            image = {tv.poster_path?`${MOVIE_IMAGE_URL}w300${tv.poster_path}` : null}
+                            tvId = { tv.id }
+                            tvTitle = { tv.original_name}
+                        />
+                    </React.Fragment>    
+                ))}
+                <hr/>
+                
+            </div>
+            
+
             <div style = {{ width:'85%',margin:'1rem auto'}}>
                 <h2>Movies by latest</h2>
                 <hr />
