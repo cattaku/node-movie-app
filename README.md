@@ -2,4 +2,4 @@ node-movie-app
 
 themoviedb API를 이용한 영화소개 사이트
 
-![movie-app](https://user-images.githubusercontent.com/50689253/106360989-d665bf00-635e-11eb-9b92-040c7d84dd45.PNG)
+![localhost_3000_](https://user-images.githubusercontent.com/50689253/106419898-da97f680-649c-11eb-9175-46bb197693ab.png)
