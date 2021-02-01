@@ -66,11 +66,12 @@ function LandingPage() {
                     discription = {MainMovieImage.overview}
                 />
             }
-           
+            
+            {/* tv popular */}
             <div style = {{ width:'85%', height:'100%',margin:'5rem auto', 
             border:'1rem', overflow:'auto', whiteSpace:'nowrap'}}>
 
-                <h2>Tv</h2>
+                <h3>Tv program by popular </h3>
                 <hr/>
                 
                 {TvPopular && TvPopular.map((tv, index) => (
@@ -81,16 +82,13 @@ function LandingPage() {
                             tvTitle = { tv.original_name}
                         />
                     </React.Fragment>    
-                ))}
-                <hr/>
-                
+                ))}             
             </div>
             
-
+            {/* movie Grid Cards */}
             <div style = {{ width:'85%',margin:'1rem auto'}}>
-                <h2>Movies by latest</h2>
+                <h3>Movies by latest</h3>
                 <hr />
-                {/* movie Grid Cards */}
                 <Row gutter={[16,16]}>
                     {Movies && Movies.map((movie, index) => (
                         <React.Fragment key= {index}>

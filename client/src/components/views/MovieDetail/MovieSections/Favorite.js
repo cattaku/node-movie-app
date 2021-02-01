@@ -36,7 +36,7 @@ function Favorite(props) {
             }
         });
        
-        Axios.post('/api/favorite/favorited', variavles)
+        Axios.get('/api/favorite/favorited', variavles)
         .then(response => {
             setFavorited(response.data.favorited)
             if (response.data.success) {  
@@ -51,7 +51,7 @@ function Favorite(props) {
     const clickFavorite = () => {
 
         if (favorited) {
-            Axios.post('/api/favorite/removeFavorite', variavles)
+            Axios.delete('/api/favorite/removeFavorite', variavles)
             .then(respones => {
                 if (respones.data.success) {
                     alert ('favorite 리스트에서 삭제되었습니다')

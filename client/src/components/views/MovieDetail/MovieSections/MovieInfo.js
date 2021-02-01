@@ -6,7 +6,7 @@ function MovieInfo(props) {
     let { movie } = props;
 
     return (
-        <Descriptions title="Movie Infor" bordered>
+        <Descriptions title="Movie Info" bordered>
             <Descriptions.Item label="title"> {movie.original_title} </Descriptions.Item>
             <Descriptions.Item label="release date"> {movie.release_date} </Descriptions.Item>
             <Descriptions.Item label="revenue"> {movie.revenue} </Descriptions.Item>

@@ -14,7 +14,7 @@ router.post('/favoriteNumber', (req, res) => {
 })
 
 //favorite List에 있는지 DB에서 정보 가져오기
-router.post('/favorited', (req, res) => {
+router.get('/favorited', (req, res) => {
     Favorite.find({ "movieId":req.body.movieId, "userFrom":req.body.userFrom })
         .exec((err, info) => {
             if (err) return res.status(400).send(err);
@@ -27,7 +27,7 @@ router.post('/favorited', (req, res) => {
 })
 
 // favorite 리스트에서 삭제
-router.post('/removeFavorite', (req, res) => {
+router.delete('/removeFavorite', (req, res) => {
     Favorite.findOneAndDelete({ movieId:req.body.movieId, userFrom:req.body.userFrom })
         .exec((err, doc) => {
             if (err) return res.status(400).send(err);

@@ -1,21 +1,17 @@
 import React from 'react';
-import { Col, Table } from 'antd';
-import xScroll from './tvScroll.css'
-
+import './tvScroll.css';
 function Xscroll(props) {
     
     return (
-        //inline-block으로 스타일 변경 할것
-          
-        <div class="tab-inner" style={{display:'inline-grid'}}>
-            <div class="items" style={{padding:'5px'}}>
+       
+        <div class="tvGrid_main">
+            <div class="items">
                 <a href = {`/tv/${props.tvId}`}>
-                    <img style = {{width:'200px', height:'300px'}} alt={props.tvTitle} src={props.image}  />
+                    <img style = {{width:'110px', height:'150px'}} alt={props.tvTitle} src={props.image}  />
+                    <div><p>{props.tvTitle}</p></div>
                 </a>
-                <p>{props.tvTitle}</p>
             </div>
         </div>
-        
    
     )
 }
